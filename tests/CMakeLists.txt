@@ -6,6 +6,17 @@ endif()
 
 project(GLMAABBTest)
 
+#-----------------------------------------------------------------------
+# C++11
+#-----------------------------------------------------------------------
+if (UNIX)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+  if (APPLE)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++")
+  endif ()
+endif ()
+
 #------------------------------------------------------------------------------
 # Required CPM Setup - See: http://github.com/iauns/cpm
 #------------------------------------------------------------------------------
