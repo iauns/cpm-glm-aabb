@@ -32,6 +32,8 @@
 #include "aabb.hpp"
 #include <glm/gtx/component_wise.hpp>
 
+namespace CPM_GLM_AABB_NS {
+
 AABB::AABB()
 {
   setNull();
@@ -46,6 +48,11 @@ AABB::AABB(const glm::vec3& p1, const glm::vec3& p2)
 {
   extend(p1);
   extend(p2);
+}
+
+AABB::AABB(const AABB& aabb)
+{
+  extend(aabb);
 }
 
 AABB::~AABB()
@@ -113,7 +120,7 @@ void AABB::extendDisk(const glm::vec3& c, const glm::vec3& n, glm::float_t r)
 glm::vec3 AABB::getDiagonal() const
 {
   if (!isNull())
-    return mMin - mMax;
+    return mMax - mMin;
   else
     return glm::vec3(0);
 }
@@ -130,20 +137,26 @@ glm::float_t AABB::getShortestEdge() const
 
 void AABB::translate(const glm::vec3& v)
 {
-  mMin += v;
-  mMax += v;
+  if (!isNull())
+  {
+    mMin += v;
+    mMax += v;
+  }
 }
 
-void AABB::scale(const glm::vec3& v)
+void AABB::scale(const glm::vec3& s, const glm::vec3& o)
 {
-  mMin -= o;
-  mMax -= o;
+  if (!isNull())
+  {
+    mMin -= o;
+    mMax -= o;
 
-  mMin *= s;
-  mMax *= s;
+    mMin *= s;
+    mMax *= s;
 
-  mMin += o;
-  mMax += o;
+    mMin += o;
+    mMax += o;
+  }
 }
 
 bool AABB::overlaps(const AABB& bb) const
@@ -201,4 +214,6 @@ bool AABB::isSimilarTo(const AABB& b, glm::float_t diff = 0.5) const
   if (max_diff.z()>acceptable_diff.z()) return false;
   return true;
 }
+
+} // namespace CPM_GLM_AABB_NS
 

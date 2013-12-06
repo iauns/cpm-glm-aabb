@@ -48,6 +48,9 @@ public:
   /// Builds an AABB that contains the two points.
   AABB(const glm::vec3& p1, const glm::vec3& p2);
 
+  /// Copy constructor.
+  AABB(const AABB& aabb);
+
   ~AABB();
 
   /// Set the AABB as NULL (not set).
@@ -70,15 +73,16 @@ public:
 
   /// Expand the AABB to include a disk centered at \p c, with normal \p n,
   /// and radius \p r.
+  /// \todo Untested -- This function is not represented in our unit tests.
   void extendDisk(const glm::vec3& c, const glm::vec3& n, glm::float_t r);
 
   /// Translates AABB by vector \p v.
   void translate(const glm::vec3& v);
 
   /// Scale the AABB by \p s, centered around \p o.
-  void scale(const glm::vec3& v);
+  void scale(const glm::vec3& s, const glm::vec3& o);
 
-  /// Retrieves the diagonal vector (computed as mMin - mMax).
+  /// Retrieves the diagonal vector (computed as mMax - mMin).
   /// If the AABB is NULL, then a vector of all zeros is returned.
   glm::vec3 getDiagonal() const;
 
@@ -97,6 +101,7 @@ public:
   glm::vec3 getMax() const {return mMax;}
 
   /// Returns true if AABBs share a face overlap.
+  /// \todo Untested -- This function is not represented in our unit tests.
   bool overlaps(const AABB& bb) const;
 
   enum INTERSECTION_TYPE { INSIDE, INTERSECT, OUTSIDE };
@@ -104,14 +109,13 @@ public:
   /// then OUTSIDE is returned.
   INTERSECTION_TYPE intersect(const AABB& bb) const;
 
-
   /// Function from SCIRun. Here is a summary of SCIRun's description:
   /// Returns true if the two AABB's are similar. If diff is 1.0, the two
   /// bboxes have to have about 50% overlap each for x,y,z. If diff is 0.0,
   /// they have to have 100% overlap.
   /// If either of the two AABBs is NULL, then false is returned.
+  /// \todo Untested -- This function is not represented in our unit tests.
   bool isSimilarTo(const AABB& b, glm::float_t diff = 0.5) const;
-
 
 protected:
 
