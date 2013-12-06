@@ -29,7 +29,7 @@
 /// \author James Hughes
 /// \date   December 2013
 
-#include "aabb.hpp"
+#include "AABB.hpp"
 #include <glm/gtx/component_wise.hpp>
 
 namespace CPM_GLM_AABB_NS {
