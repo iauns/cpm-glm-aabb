@@ -41,17 +41,20 @@ AABB::AABB()
 
 AABB::AABB(const glm::vec3& center, glm::float_t radius)
 {
+  setNull();
   extend(center, radius);
 }
 
 AABB::AABB(const glm::vec3& p1, const glm::vec3& p2)
 {
+  setNull();
   extend(p1);
   extend(p2);
 }
 
 AABB::AABB(const AABB& aabb)
 {
+  setNull();
   extend(aabb);
 }
 
@@ -82,7 +85,7 @@ void AABB::extend(const glm::vec3& p)
   }
 }
 
-void AABB::extend(const glm::vec3& p, glm::float_t r)
+void AABB::extend(const glm::vec3& p, glm::float_t radius)
 {
   glm::vec3 r(radius);
   if (!isNull())
@@ -99,7 +102,7 @@ void AABB::extend(const glm::vec3& p, glm::float_t r)
 
 void AABB::extend(const AABB& aabb)
 {
-  if (aabb.valid())
+  if (!aabb.isNull())
   {
     extend(aabb.mMin);
     extend(aabb.mMax);
@@ -109,12 +112,12 @@ void AABB::extend(const AABB& aabb)
 void AABB::extendDisk(const glm::vec3& c, const glm::vec3& n, glm::float_t r)
 {
   if (glm::length(n) < 1.e-12) { extend(c); return; }
-  n = glm::normalize(n);
-  glm::float_t x = sqrt(1 - n.x()) * r;
-  glm::float_t y = sqrt(1 - n.y()) * r;
-  glm::float_t z = sqrt(1 - n.z()) * r;
-  extend(cen + glm::vec3(x,y,z));
-  extend(cen - glm::vec3(x,y,z));
+  glm::vec3 norm = glm::normalize(n);
+  glm::float_t x = sqrt(1 - norm.x) * r;
+  glm::float_t y = sqrt(1 - norm.y) * r;
+  glm::float_t z = sqrt(1 - norm.z) * r;
+  extend(c + glm::vec3(x,y,z));
+  extend(c - glm::vec3(x,y,z));
 }
 
 glm::vec3 AABB::getDiagonal() const
@@ -164,31 +167,31 @@ bool AABB::overlaps(const AABB& bb) const
   if (isNull() || bb.isNull())
     return false;
 
-  if( bb.mMin.x() > mMax.x() || bb.mMax.x() < mMin.x())
+  if( bb.mMin.x > mMax.x || bb.mMax.x < mMin.x)
     return false;
-  else if( bb.mMin.y() > mMax.y() || bb.mMax.y() < mMin.y())
+  else if( bb.mMin.y > mMax.y || bb.mMax.y < mMin.y)
     return false;
-  else if( bb.mMin.z() > mMax.z() || bb.mMax.z() < mMin.z())
+  else if( bb.mMin.z > mMax.z || bb.mMax.z < mMin.z)
     return false;
 
   return true;
 }
 
-AABB::INTERSECTION_TYPE intersect(const AABB& b) const
+AABB::INTERSECTION_TYPE AABB::intersect(const AABB& b) const
 {
-  if (isNull() || bb.isNull())
+  if (isNull() || b.isNull())
     return OUTSIDE;
 
-  if ((mMax.x() < b.mMin.x()) || (mMin.x() > b.mMax.x()) ||
-      (mMax.y() < b.mMin.y()) || (mMin.y() > b.mMax.y()) ||
-      (mMax.z() < b.mMin.z()) || (mMin.z() > b.mMax.z())) 
+  if ((mMax.x < b.mMin.x) || (mMin.x > b.mMax.x) ||
+      (mMax.y < b.mMin.y) || (mMin.y > b.mMax.y) ||
+      (mMax.z < b.mMin.z) || (mMin.z > b.mMax.z)) 
   {
     return OUTSIDE;
   }
 
-  if ((mMin.x() <= b.mMin.x()) && (mMax.x() >= b.mMax.x()) &&
-      (mMin.y() <= b.mMin.y()) && (mMax.y() >= b.mMax.y()) &&
-      (mMin.z() <= b.mMin.z()) && (mMax.z() >= b.mMax.z())) 
+  if ((mMin.x <= b.mMin.x) && (mMax.x >= b.mMax.x) &&
+      (mMin.y <= b.mMin.y) && (mMax.y >= b.mMax.y) &&
+      (mMin.z <= b.mMin.z) && (mMax.z >= b.mMax.z)) 
   {
     return INSIDE;
   }
@@ -197,21 +200,21 @@ AABB::INTERSECTION_TYPE intersect(const AABB& b) const
 }
 
 
-bool AABB::isSimilarTo(const AABB& b, glm::float_t diff = 0.5) const
+bool AABB::isSimilarTo(const AABB& b, glm::float_t diff) const
 {
   if (isNull() || b.isNull()) return false;
 
-  glm::vec3 acceptable_diff=((getDiagonal()+b.getDiagonal())/2.0)*diff;
+  glm::vec3 acceptable_diff=( (getDiagonal()+b.getDiagonal()) / glm::float_t(2.0))*diff;
   glm::vec3 min_diff(mMin-b.mMin);
-  min_diff = glm::vec3(fabs(min_diff.x()),fabs(min_diff.y()),fabs(min_diff.z()));
-  if (min_diff.x()>acceptable_diff.x()) return false;
-  if (min_diff.y()>acceptable_diff.y()) return false;
-  if (min_diff.z()>acceptable_diff.z()) return false;
+  min_diff = glm::vec3(fabs(min_diff.x),fabs(min_diff.y),fabs(min_diff.z));
+  if (min_diff.x > acceptable_diff.x) return false;
+  if (min_diff.y > acceptable_diff.y) return false;
+  if (min_diff.z > acceptable_diff.z) return false;
   glm::vec3 max_diff(mMax-b.mMax);
-  max_diff = glm::vec3(fabs(max_diff.x()),fabs(max_diff.y()),fabs(max_diff.z()));
-  if (max_diff.x()>acceptable_diff.x()) return false;
-  if (max_diff.y()>acceptable_diff.y()) return false;
-  if (max_diff.z()>acceptable_diff.z()) return false;
+  max_diff = glm::vec3(fabs(max_diff.x),fabs(max_diff.y),fabs(max_diff.z));
+  if (max_diff.x > acceptable_diff.x) return false;
+  if (max_diff.y > acceptable_diff.y) return false;
+  if (max_diff.z > acceptable_diff.z) return false;
   return true;
 }
 

@@ -9,7 +9,7 @@ fi
 set -e
 
 pushd ./bin > /dev/null
-  cmake -DUSE_OS_MESA=ON ..
+  cmake ..
   make -j4
   ./glm_aabb_test
 popd

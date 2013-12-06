@@ -2,19 +2,21 @@
 /// \date   November 2013
 
 #include <glm-aabb/AABB.hpp>
+#include <gtest/gtest.h>
 
 namespace {
 
-void vec3Test(const glm::vec3& a, const glm::vec3& b)
-{
-  EXPECT_FLOAT_EQ(a.x, b.x);
-  EXPECT_FLOAT_EQ(a.y, b.y);
-  EXPECT_FLOAT_EQ(a.z, b.z);
-};
+// We want to use a macro so we know on what line the failure occurs.
+#define vec3Test(A, B) \
+{ \
+  EXPECT_FLOAT_EQ((A).x, (B).x); \
+  EXPECT_FLOAT_EQ((A).y, (B).y); \
+  EXPECT_FLOAT_EQ((A).z, (B).z); \
+}
 
 TEST(AABB, Constructors)
 {
-  CPM_AABB_NS::AABB aabbNull();
+  CPM_AABB_NS::AABB aabbNull;
   EXPECT_EQ(true, aabbNull.isNull());
 
   CPM_AABB_NS::AABB aabbSphere(glm::vec3(3.0), 1.0);
@@ -70,7 +72,7 @@ TEST(AABB, MakeNonNull)
   aabb.translate(glm::vec3(999.0));
   EXPECT_EQ(true, aabb.isNull());
 
-  aabb.scale(glm::vec3(3.0f, 3.0f, 3.0f));
+  aabb.scale(glm::vec3(3.0, 3.0, 3.0), glm::vec3(2.0));
   EXPECT_EQ(true, aabb.isNull());
 }
 
@@ -102,17 +104,17 @@ TEST(AABB, ExtendNumericTests)
   aabb.extend(glm::vec3(3.0), 1.0);
   EXPECT_EQ(false, aabb.isNull());
   vec3Test(glm::vec3(2.0, 2.0, 2.0), aabb.getMin());
-  vec3Test(glm::vec3(4.0, 4.0, 4.0), aabb.getMin());
+  vec3Test(glm::vec3(4.0, 4.0, 4.0), aabb.getMax());
   vec3Test(aabb.getMax() - aabb.getMin(), aabb.getDiagonal());
 
   aabb.extend(0.5);
   vec3Test(glm::vec3(1.5, 1.5, 1.5), aabb.getMin());
-  vec3Test(glm::vec3(4.5, 4.5, 4.5), aabb.getMin());
+  vec3Test(glm::vec3(4.5, 4.5, 4.5), aabb.getMax());
   vec3Test(aabb.getMax() - aabb.getMin(), aabb.getDiagonal());
 
-  aabb.translate(0.5);
+  aabb.translate(glm::vec3(0.5));
   vec3Test(glm::vec3(2.0, 2.0, 2.0), aabb.getMin());
-  vec3Test(glm::vec3(5.0, 5.0, 5.0), aabb.getMin());
+  vec3Test(glm::vec3(5.0, 5.0, 5.0), aabb.getMax());
   vec3Test(aabb.getMax() - aabb.getMin(), aabb.getDiagonal());
   
   aabb.setNull();
@@ -123,16 +125,17 @@ TEST(AABB, ExtendNumericTests)
   vec3Test(glm::vec3(0.0, 0.0, 0.0), aabb.getMin());
   vec3Test(glm::vec3(2.0, 2.0, 2.0), aabb.getMax());
 
-  aabb.scale(glm::vec3(2.0), 1.0);
+  aabb.scale(glm::vec3(2.0), glm::vec3(1.0));
   vec3Test(glm::vec3(-1.0, -1.0, -1.0), aabb.getMin());
   vec3Test(glm::vec3( 3.0,  3.0,  3.0), aabb.getMax());
 
+  aabb.setNull();
   aabb.extend(glm::vec3(1.0));
   aabb.extend(1.0);
   vec3Test(glm::vec3(0.0, 0.0, 0.0), aabb.getMin());
   vec3Test(glm::vec3(2.0, 2.0, 2.0), aabb.getMax());
 
-  aabb.scale(glm::vec3(2.0), 0.0);
+  aabb.scale(glm::vec3(2.0), glm::vec3(0.0));
   vec3Test(glm::vec3(0.0, 0.0, 0.0), aabb.getMin());
   vec3Test(glm::vec3(4.0, 4.0, 4.0), aabb.getMax());
 }
@@ -140,22 +143,22 @@ TEST(AABB, ExtendNumericTests)
 TEST(AABB, Itersect)
 {
   CPM_AABB_NS::AABB bb1;
-  aabb.extend(glm::vec3(1.0));
-  aabb.extend(1.0);
-  vec3Test(glm::vec3(0.0, 0.0, 0.0), aabb.getMin());
-  vec3Test(glm::vec3(2.0, 2.0, 2.0), aabb.getMax());
+  bb1.extend(glm::vec3(1.0));
+  bb1.extend(1.0);
+  vec3Test(glm::vec3(0.0, 0.0, 0.0), bb1.getMin());
+  vec3Test(glm::vec3(2.0, 2.0, 2.0), bb1.getMax());
 
   CPM_AABB_NS::AABB bb2;
-  aabb.extend(glm::vec3(5.0));
-  aabb.extend(1.0);
-  vec3Test(glm::vec3(4.0, 4.0, 4.0), aabb.getMin());
-  vec3Test(glm::vec3(6.0, 6.0, 6.0), aabb.getMax());
+  bb2.extend(glm::vec3(5.0));
+  bb2.extend(1.0);
+  vec3Test(glm::vec3(4.0, 4.0, 4.0), bb2.getMin());
+  vec3Test(glm::vec3(6.0, 6.0, 6.0), bb2.getMax());
 
   CPM_AABB_NS::AABB bb3;
-  aabb.extend(glm::vec3(1.0, 1.0, 1.0));
-  aabb.extend(glm::vec3(5.0, 5.0, 5.0));
-  vec3Test(glm::vec3(1.0, 1.0, 1.0), aabb.getMin());
-  vec3Test(glm::vec3(5.0, 5.0, 5.0), aabb.getMax());
+  bb3.extend(glm::vec3(1.0, 1.0, 1.0));
+  bb3.extend(glm::vec3(5.0, 5.0, 5.0));
+  vec3Test(glm::vec3(1.0, 1.0, 1.0), bb3.getMin());
+  vec3Test(glm::vec3(5.0, 5.0, 5.0), bb3.getMax());
 
   EXPECT_EQ(CPM_AABB_NS::AABB::OUTSIDE, bb1.intersect(bb2));
   EXPECT_EQ(CPM_AABB_NS::AABB::INTERSECT, bb1.intersect(bb3));
@@ -183,7 +186,7 @@ TEST(AABB, Itersect)
   CPM_AABB_NS::AABB bb3_inside2(glm::vec3(2.5), glm::vec3(3.5));
   EXPECT_EQ(CPM_AABB_NS::AABB::OUTSIDE, bb1.intersect(bb3_inside2));
   EXPECT_EQ(CPM_AABB_NS::AABB::OUTSIDE, bb2.intersect(bb3_inside2));
-  EXPECT_EQ(CPM_AABB_NS::AABB::INTERSECT, bb3.intersect(bb3_inside2));
+  EXPECT_EQ(CPM_AABB_NS::AABB::INSIDE, bb3.intersect(bb3_inside2));
 }
 
 }

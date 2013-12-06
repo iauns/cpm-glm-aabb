@@ -54,7 +54,7 @@ CPM_Finish()
 #-----------------------------------------------------------------------
 
 if(APPLE)
-  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -Wconversion -Wshadow")
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror -Wshadow")
 endif()
 
 #-----------------------------------------------------------------------

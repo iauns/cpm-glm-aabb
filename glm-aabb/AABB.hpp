@@ -54,10 +54,10 @@ public:
   ~AABB();
 
   /// Set the AABB as NULL (not set).
-  void setNull()      {mMin = glm::vec3(1.0); mMax = glm::vec3(1.0);}
+  void setNull()      {mMin = glm::vec3(1.0); mMax = glm::vec3(-1.0);}
 
   /// Returns true if AABB is NULL (not set).
-  void isNull() const {return mMin.x > mMax.x || mMin.y > mMax.y || mMin.z > mMax.z;}
+  bool isNull() const {return mMin.x > mMax.x || mMin.y > mMax.y || mMin.z > mMax.z;}
 
   /// Extend the bounding box on all sides by \p val.
   void extend(glm::float_t val);
