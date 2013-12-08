@@ -138,6 +138,19 @@ glm::float_t AABB::getShortestEdge() const
   return glm::compMin(getDiagonal());
 }
 
+glm::vec3 AABB::getCenter() const
+{
+  if (!isNull())
+  {
+    glm::vec3 d = getDiagonal();
+    return mMin + (d * glm::float_t(0.5));
+  }
+  else
+  {
+    return glm::vec3(0.0);
+  }
+}
+
 void AABB::translate(const glm::vec3& v)
 {
   if (!isNull())

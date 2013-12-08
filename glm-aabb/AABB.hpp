@@ -82,6 +82,9 @@ public:
   /// Scale the AABB by \p s, centered around \p o.
   void scale(const glm::vec3& s, const glm::vec3& o);
 
+  /// Retrieves the center of the AABB.
+  glm::vec3 getCenter() const;
+
   /// Retrieves the diagonal vector (computed as mMax - mMin).
   /// If the AABB is NULL, then a vector of all zeros is returned.
   glm::vec3 getDiagonal() const;
