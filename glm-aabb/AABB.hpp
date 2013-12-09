@@ -125,8 +125,8 @@ public:
 
 protected:
 
-  glm::vec3 mMin;
-  glm::vec3 mMax;
+  glm::vec3 mMin;   ///< Minimum point.
+  glm::vec3 mMax;   ///< Maximum point.
 };
 
 } // namespace CPM_GLM_AABB_NS 
