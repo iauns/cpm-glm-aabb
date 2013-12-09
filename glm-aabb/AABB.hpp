@@ -74,7 +74,7 @@ public:
 
   /// Expand the AABB to include a disk centered at \p center, with normal \p
   /// normal, and radius \p radius.
-  /// \todo Untested -- This function is not represented in our unit tests.
+  /// \xxx Untested -- This function is not represented in our unit tests.
   void extendDisk(const glm::vec3& center, const glm::vec3& normal,
                   glm::float_t radius);
 
@@ -106,7 +106,7 @@ public:
   glm::vec3 getMax() const {return mMax;}
 
   /// Returns true if AABBs share a face overlap.
-  /// \todo Untested -- This function is not represented in our unit tests.
+  /// \xxx Untested -- This function is not represented in our unit tests.
   bool overlaps(const AABB& bb) const;
 
   /// Type returned from call to intersect.
@@ -120,7 +120,7 @@ public:
   /// bboxes have to have about 50% overlap each for x,y,z. If diff is 0.0,
   /// they have to have 100% overlap.
   /// If either of the two AABBs is NULL, then false is returned.
-  /// \todo Untested -- This function is not represented in our unit tests.
+  /// \xxx Untested -- This function is not represented in our unit tests.
   bool isSimilarTo(const AABB& b, glm::float_t diff = 0.5) const;
 
 private:
