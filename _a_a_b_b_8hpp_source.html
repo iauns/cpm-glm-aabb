@@ -84,12 +84,11 @@
 <a name="l00041"></a>00041 <span class="keyword">public</span>:
 <a name="l00043"></a>00043   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a760fe05f4e4cdf052bc4957618cdb060" title="Builds a null AABB.">AABB</a>();
 <a name="l00044"></a>00044 
-<a name="l00046"></a>00046   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a760fe05f4e4cdf052bc4957618cdb060" title="Builds a null AABB.">AABB</a>(<span class="keyword">const</span> glm::vec3&amp; center, glm::float_t radius);
-<a name="l00047"></a>00047 
-<a name="l00049"></a>00049   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a760fe05f4e4cdf052bc4957618cdb060" title="Builds a null AABB.">AABB</a>(<span class="keyword">const</span> glm::vec3&amp; p1, <span class="keyword">const</span> glm::vec3&amp; p2);
-<a name="l00050"></a>00050 
-<a name="l00052"></a>00052   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a760fe05f4e4cdf052bc4957618cdb060" title="Builds a null AABB.">AABB</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; aabb);
-<a name="l00053"></a>00053 
+<a name="l00048"></a>00048   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a760fe05f4e4cdf052bc4957618cdb060" title="Builds a null AABB.">AABB</a>(<span class="keyword">const</span> glm::vec3&amp; center, glm::float_t radius);
+<a name="l00049"></a>00049 
+<a name="l00051"></a>00051   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a760fe05f4e4cdf052bc4957618cdb060" title="Builds a null AABB.">AABB</a>(<span class="keyword">const</span> glm::vec3&amp; p1, <span class="keyword">const</span> glm::vec3&amp; p2);
+<a name="l00052"></a>00052 
+<a name="l00053"></a>00053   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a760fe05f4e4cdf052bc4957618cdb060" title="Builds a null AABB.">AABB</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; aabb);
 <a name="l00054"></a>00054   ~<a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>();
 <a name="l00055"></a>00055 
 <a name="l00057"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a91e28e1274cd18a6413c67bf55356cf6">00057</a>   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a91e28e1274cd18a6413c67bf55356cf6" title="Set the AABB as NULL (not set).">setNull</a>()      {mMin = glm::vec3(1.0); mMax = glm::vec3(-1.0);}
@@ -100,50 +99,50 @@
 <a name="l00064"></a>00064 
 <a name="l00066"></a>00066   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a841768d0c2bda96f017187caebf090e6" title="Extend the bounding box on all sides by val.">extend</a>(<span class="keyword">const</span> glm::vec3&amp; p);
 <a name="l00067"></a>00067 
-<a name="l00070"></a>00070   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a841768d0c2bda96f017187caebf090e6" title="Extend the bounding box on all sides by val.">extend</a>(<span class="keyword">const</span> glm::vec3&amp; center, glm::float_t radius);
-<a name="l00071"></a>00071 
-<a name="l00073"></a>00073   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a841768d0c2bda96f017187caebf090e6" title="Extend the bounding box on all sides by val.">extend</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; aabb);
-<a name="l00074"></a>00074 
-<a name="l00078"></a>00078   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ad8a4ba53a43c71a806633646193f2794">extendDisk</a>(<span class="keyword">const</span> glm::vec3&amp; center, <span class="keyword">const</span> glm::vec3&amp; normal,
-<a name="l00079"></a>00079                   glm::float_t radius);
-<a name="l00080"></a>00080 
-<a name="l00082"></a>00082   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#aa4fcc640b54f7dec910f2ec1c9e600cb" title="Translates AABB by vector v.">translate</a>(<span class="keyword">const</span> glm::vec3&amp; v);
-<a name="l00083"></a>00083 
-<a name="l00085"></a>00085   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a0805d15aa9eb45538315dcd851638a6b" title="Scale the AABB by scale, centered around origin.">scale</a>(<span class="keyword">const</span> glm::vec3&amp; <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a0805d15aa9eb45538315dcd851638a6b" title="Scale the AABB by scale, centered around origin.">scale</a>, <span class="keyword">const</span> glm::vec3&amp; origin);
-<a name="l00086"></a>00086 
-<a name="l00088"></a>00088   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a93e79a09926b6f4f67a3852cd06d62bb" title="Retrieves the center of the AABB.">getCenter</a>() <span class="keyword">const</span>;
-<a name="l00089"></a>00089 
-<a name="l00092"></a>00092   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a41db9bb794f3ef4d984fcbba0accf7e0">getDiagonal</a>() <span class="keyword">const</span>;
-<a name="l00093"></a>00093 
-<a name="l00096"></a>00096   glm::float_t <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a417cd83cc3d7054fad1921594de13852">getLongestEdge</a>() <span class="keyword">const</span>;
-<a name="l00097"></a>00097 
-<a name="l00100"></a>00100   glm::float_t <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a80d565d31c1538fb84d323ad24c78916">getShortestEdge</a>() <span class="keyword">const</span>;
-<a name="l00101"></a>00101 
-<a name="l00103"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224">00103</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224" title="Retrieves the AABB&#39;s minimum point.">getMin</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> mMin;}
-<a name="l00104"></a>00104 
-<a name="l00106"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a">00106</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a" title="Retrieves the AABB&#39;s maximum point.">getMax</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> mMax;}
-<a name="l00107"></a>00107 
-<a name="l00110"></a>00110   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a30edfc023eece7b0efc250ca4dd08cba">overlaps</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; bb) <span class="keyword">const</span>;
-<a name="l00111"></a>00111 
-<a name="l00113"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ab0b17d9f602dbfa1a422ae25bb9fb3ac">00113</a>   <span class="keyword">enum</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ab0b17d9f602dbfa1a422ae25bb9fb3ac" title="Type returned from call to intersect.">INTERSECTION_TYPE</a> { INSIDE, INTERSECT, OUTSIDE };
-<a name="l00116"></a>00116   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ab0b17d9f602dbfa1a422ae25bb9fb3ac" title="Type returned from call to intersect.">INTERSECTION_TYPE</a> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a467225ccdbf398ebeec51098f860539a">intersect</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; bb) <span class="keyword">const</span>;
-<a name="l00117"></a>00117 
-<a name="l00124"></a>00124   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a832923a0b76b8481ae6514a8a0fc652a">isSimilarTo</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; b, glm::float_t diff = 0.5) <span class="keyword">const</span>;
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126 <span class="keyword">private</span>:
-<a name="l00127"></a>00127 
-<a name="l00128"></a>00128   glm::vec3 mMin;   
-<a name="l00129"></a>00129   glm::vec3 mMax;   
-<a name="l00130"></a>00130 };
-<a name="l00131"></a>00131 
-<a name="l00132"></a>00132 } <span class="comment">// namespace CPM_GLM_AABB_NS </span>
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 <span class="preprocessor">#endif </span>
+<a name="l00072"></a>00072   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a841768d0c2bda96f017187caebf090e6" title="Extend the bounding box on all sides by val.">extend</a>(<span class="keyword">const</span> glm::vec3&amp; center, glm::float_t radius);
+<a name="l00073"></a>00073 
+<a name="l00075"></a>00075   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a841768d0c2bda96f017187caebf090e6" title="Extend the bounding box on all sides by val.">extend</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; aabb);
+<a name="l00076"></a>00076 
+<a name="l00080"></a>00080   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ad8a4ba53a43c71a806633646193f2794">extendDisk</a>(<span class="keyword">const</span> glm::vec3&amp; center, <span class="keyword">const</span> glm::vec3&amp; normal,
+<a name="l00081"></a>00081                   glm::float_t radius);
+<a name="l00082"></a>00082 
+<a name="l00084"></a>00084   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#aa4fcc640b54f7dec910f2ec1c9e600cb" title="Translates AABB by vector v.">translate</a>(<span class="keyword">const</span> glm::vec3&amp; v);
+<a name="l00085"></a>00085 
+<a name="l00090"></a>00090   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a0805d15aa9eb45538315dcd851638a6b">scale</a>(<span class="keyword">const</span> glm::vec3&amp; <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a0805d15aa9eb45538315dcd851638a6b">scale</a>, <span class="keyword">const</span> glm::vec3&amp; origin);
+<a name="l00091"></a>00091 
+<a name="l00093"></a>00093   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a93e79a09926b6f4f67a3852cd06d62bb" title="Retrieves the center of the AABB.">getCenter</a>() <span class="keyword">const</span>;
+<a name="l00094"></a>00094 
+<a name="l00097"></a>00097   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a41db9bb794f3ef4d984fcbba0accf7e0">getDiagonal</a>() <span class="keyword">const</span>;
+<a name="l00098"></a>00098 
+<a name="l00101"></a>00101   glm::float_t <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a417cd83cc3d7054fad1921594de13852">getLongestEdge</a>() <span class="keyword">const</span>;
+<a name="l00102"></a>00102 
+<a name="l00105"></a>00105   glm::float_t <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a80d565d31c1538fb84d323ad24c78916">getShortestEdge</a>() <span class="keyword">const</span>;
+<a name="l00106"></a>00106 
+<a name="l00108"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224">00108</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224" title="Retrieves the AABB&#39;s minimum point.">getMin</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> mMin;}
+<a name="l00109"></a>00109 
+<a name="l00111"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a">00111</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a" title="Retrieves the AABB&#39;s maximum point.">getMax</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> mMax;}
+<a name="l00112"></a>00112 
+<a name="l00115"></a>00115   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a30edfc023eece7b0efc250ca4dd08cba">overlaps</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; bb) <span class="keyword">const</span>;
+<a name="l00116"></a>00116 
+<a name="l00118"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ab0b17d9f602dbfa1a422ae25bb9fb3ac">00118</a>   <span class="keyword">enum</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ab0b17d9f602dbfa1a422ae25bb9fb3ac" title="Type returned from call to intersect.">INTERSECTION_TYPE</a> { INSIDE, INTERSECT, OUTSIDE };
+<a name="l00121"></a>00121   <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ab0b17d9f602dbfa1a422ae25bb9fb3ac" title="Type returned from call to intersect.">INTERSECTION_TYPE</a> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a467225ccdbf398ebeec51098f860539a">intersect</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; bb) <span class="keyword">const</span>;
+<a name="l00122"></a>00122 
+<a name="l00129"></a>00129   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a832923a0b76b8481ae6514a8a0fc652a">isSimilarTo</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; b, glm::float_t diff = 0.5) <span class="keyword">const</span>;
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131 <span class="keyword">private</span>:
+<a name="l00132"></a>00132 
+<a name="l00133"></a>00133   glm::vec3 mMin;   
+<a name="l00134"></a>00134   glm::vec3 mMax;   
+<a name="l00135"></a>00135 };
+<a name="l00136"></a>00136 
+<a name="l00137"></a>00137 } <span class="comment">// namespace CPM_GLM_AABB_NS </span>
+<a name="l00138"></a>00138 
+<a name="l00139"></a>00139 <span class="preprocessor">#endif </span>
 </pre></div></div><!-- contents -->
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 9 2013 19:52:16 for GLM AABB by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 9 2013 20:02:40 for GLM AABB by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
