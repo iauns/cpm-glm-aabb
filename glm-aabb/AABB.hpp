@@ -35,7 +35,7 @@
 
 namespace CPM_GLM_AABB_NS {
 
-/// Axis aligned bounding box implemented on top of GLM.
+/// Standalone axis aligned bounding box implemented built on top of GLM.
 class AABB
 {
 public:
@@ -65,22 +65,24 @@ public:
   /// Expand the AABB to include point \p p.
   void extend(const glm::vec3& p);
 
-  /// Expand the AABB to include a sphere centered at \p p and of radius \p r.
-  void extend(const glm::vec3& p, glm::float_t r);
+  /// Expand the AABB to include a sphere centered at \p p and of radius \p
+  /// radius.
+  void extend(const glm::vec3& p, glm::float_t radius);
 
   /// Expand the AABB to encompass the given AABB.
   void extend(const AABB& aabb);
 
-  /// Expand the AABB to include a disk centered at \p c, with normal \p n,
-  /// and radius \p r.
+  /// Expand the AABB to include a disk centered at \p center, with normal \p
+  /// normal, and radius \p radius.
   /// \todo Untested -- This function is not represented in our unit tests.
-  void extendDisk(const glm::vec3& c, const glm::vec3& n, glm::float_t r);
+  void extendDisk(const glm::vec3& center, const glm::vec3& normal,
+                  glm::float_t radius);
 
   /// Translates AABB by vector \p v.
   void translate(const glm::vec3& v);
 
-  /// Scale the AABB by \p s, centered around \p o.
-  void scale(const glm::vec3& s, const glm::vec3& o);
+  /// Scale the AABB by \p scale, centered around \p origin.
+  void scale(const glm::vec3& scale, const glm::vec3& origin);
 
   /// Retrieves the center of the AABB.
   glm::vec3 getCenter() const;
@@ -107,6 +109,7 @@ public:
   /// \todo Untested -- This function is not represented in our unit tests.
   bool overlaps(const AABB& bb) const;
 
+  /// Type returned from call to intersect.
   enum INTERSECTION_TYPE { INSIDE, INTERSECT, OUTSIDE };
   /// Returns one of the intersection types. If either of the aabbs are invalid,
   /// then OUTSIDE is returned.

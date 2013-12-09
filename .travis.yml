@@ -1,13 +1,19 @@
 language: cpp
 compiler:
-  - clang
-  - gcc
+- clang
+- gcc
 before_install:
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
-  - sudo apt-get update -qq
-  - if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
-  - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
-script: "./tests/run-tests.sh"
+- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+- sudo apt-get update -qq
+- if [ "$CXX" = "g++" ]; then sudo apt-get install -qq g++-4.8; fi
+- if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+script: ./tests/run-tests.sh
+after_success:
+- git clone https://github.com/iauns/travis-doxy-helper ./doxy-helper
+- ./doxy-helper/update-doxygen.sh ./.dox ./dox-repo https://github.com/iauns/cpm-glm-aabb
 branches:
   only:
-    - master
+  - master
+env:
+  global:
+    secure: Hrek88ZimsZqQMp2xVrEmFEumKkgewIwtFkop1Pbxtr7BHpRWxIu0sEmvsiTx/cuHEN3GOauNyd5pnWAjAkCRASBLFYonysxfo5lIABNnOZb6lv4pV35prY5nV/FhC3NtRFitvZ2tISRwKRMWL3IwySHCJr2Sv/aey/6lCiJlPM=
