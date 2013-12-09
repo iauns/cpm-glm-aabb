@@ -42,15 +42,15 @@ public:
   /// Builds a null AABB.
   AABB();
 
-  /// Builds an AABB that encompasses a sphere of \p radius and \p center.
+  /// Builds an AABB that encompasses a sphere.
+  /// \param[in]  center Center of the sphere.
+  /// \param[in]  radius Radius of the sphere.
   AABB(const glm::vec3& center, glm::float_t radius);
 
   /// Builds an AABB that contains the two points.
   AABB(const glm::vec3& p1, const glm::vec3& p2);
 
-  /// Copy constructor.
   AABB(const AABB& aabb);
-
   ~AABB();
 
   /// Set the AABB as NULL (not set).
@@ -67,9 +67,11 @@ public:
 
   /// Expand the AABB to include a sphere centered at \p center and of radius \p
   /// radius.
+  /// \param[in]  center Center of sphere.
+  /// \param[in]  radius Radius of sphere.
   void extend(const glm::vec3& center, glm::float_t radius);
 
-  /// Expand the AABB to encompass the given AABB.
+  /// Expand the AABB to encompass the given \p aabb.
   void extend(const AABB& aabb);
 
   /// Expand the AABB to include a disk centered at \p center, with normal \p
@@ -82,6 +84,9 @@ public:
   void translate(const glm::vec3& v);
 
   /// Scale the AABB by \p scale, centered around \p origin.
+  /// \param[in]  scale  3D vector specifying scale along each axis.
+  /// \param[in]  origin Origin of scaling operation. Most useful origin would
+  ///                    be the center of the AABB.
   void scale(const glm::vec3& scale, const glm::vec3& origin);
 
   /// Retrieves the center of the AABB.
