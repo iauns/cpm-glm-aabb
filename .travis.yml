@@ -9,7 +9,7 @@ before_install:
 - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
 script: ./tests/run-tests.sh
 after_success:
-- sudo apt-get install doxygen
+- sudo apt-get -no-install-recommends install doxygen
 - git clone https://github.com/iauns/travis-doxy-helper ./doxy-helper
 - ./doxy-helper/update-doxygen.sh ./.dox ./dox-repo https://github.com/iauns/cpm-glm-aabb
 branches:
