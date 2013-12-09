@@ -1,6 +1,3 @@
-/// \author James Hughes
-/// \date   December 2013
-
 #ifndef IAUNS_GLM_AABB_HPP
 #define IAUNS_GLM_AABB_HPP
 

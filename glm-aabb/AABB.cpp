@@ -1,6 +1,3 @@
-/// \author James Hughes
-/// \date   December 2013
-
 #include "AABB.hpp"
 #include <glm/gtx/component_wise.hpp>
 
