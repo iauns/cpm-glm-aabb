@@ -65,9 +65,9 @@ public:
   /// Expand the AABB to include point \p p.
   void extend(const glm::vec3& p);
 
-  /// Expand the AABB to include a sphere centered at \p p and of radius \p
+  /// Expand the AABB to include a sphere centered at \p center and of radius \p
   /// radius.
-  void extend(const glm::vec3& p, glm::float_t radius);
+  void extend(const glm::vec3& center, glm::float_t radius);
 
   /// Expand the AABB to encompass the given AABB.
   void extend(const AABB& aabb);
