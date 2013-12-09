@@ -123,7 +123,7 @@ public:
   /// \todo Untested -- This function is not represented in our unit tests.
   bool isSimilarTo(const AABB& b, glm::float_t diff = 0.5) const;
 
-protected:
+private:
 
   glm::vec3 mMin;   ///< Minimum point.
   glm::vec3 mMax;   ///< Maximum point.
