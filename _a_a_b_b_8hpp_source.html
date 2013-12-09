@@ -92,9 +92,9 @@
 <a name="l00053"></a>00053 
 <a name="l00054"></a>00054   ~<a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>();
 <a name="l00055"></a>00055 
-<a name="l00057"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a91e28e1274cd18a6413c67bf55356cf6">00057</a>   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a91e28e1274cd18a6413c67bf55356cf6" title="Set the AABB as NULL (not set).">setNull</a>()      {<a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a638b7bc7e9e2937e8630c404ba0a118e" title="Minimum point.">mMin</a> = glm::vec3(1.0); <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abbc5580d0568a14510f099de6eb7bab4" title="Maximum point.">mMax</a> = glm::vec3(-1.0);}
+<a name="l00057"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a91e28e1274cd18a6413c67bf55356cf6">00057</a>   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a91e28e1274cd18a6413c67bf55356cf6" title="Set the AABB as NULL (not set).">setNull</a>()      {mMin = glm::vec3(1.0); mMax = glm::vec3(-1.0);}
 <a name="l00058"></a>00058 
-<a name="l00060"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ac02f2a4d7312eb91f40980adfd4e31b2">00060</a>   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ac02f2a4d7312eb91f40980adfd4e31b2" title="Returns true if AABB is NULL (not set).">isNull</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a638b7bc7e9e2937e8630c404ba0a118e" title="Minimum point.">mMin</a>.x &gt; <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abbc5580d0568a14510f099de6eb7bab4" title="Maximum point.">mMax</a>.x || <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a638b7bc7e9e2937e8630c404ba0a118e" title="Minimum point.">mMin</a>.y &gt; <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abbc5580d0568a14510f099de6eb7bab4" title="Maximum point.">mMax</a>.y || <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a638b7bc7e9e2937e8630c404ba0a118e" title="Minimum point.">mMin</a>.z &gt; <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abbc5580d0568a14510f099de6eb7bab4" title="Maximum point.">mMax</a>.z;}
+<a name="l00060"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ac02f2a4d7312eb91f40980adfd4e31b2">00060</a>   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#ac02f2a4d7312eb91f40980adfd4e31b2" title="Returns true if AABB is NULL (not set).">isNull</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> mMin.x &gt; mMax.x || mMin.y &gt; mMax.y || mMin.z &gt; mMax.z;}
 <a name="l00061"></a>00061 
 <a name="l00063"></a>00063   <span class="keywordtype">void</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a841768d0c2bda96f017187caebf090e6" title="Extend the bounding box on all sides by val.">extend</a>(glm::float_t val);
 <a name="l00064"></a>00064 
@@ -119,9 +119,9 @@
 <a name="l00097"></a>00097 
 <a name="l00100"></a>00100   glm::float_t <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a80d565d31c1538fb84d323ad24c78916">getShortestEdge</a>() <span class="keyword">const</span>;
 <a name="l00101"></a>00101 
-<a name="l00103"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224">00103</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224" title="Retrieves the AABB&#39;s minimum point.">getMin</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a638b7bc7e9e2937e8630c404ba0a118e" title="Minimum point.">mMin</a>;}
+<a name="l00103"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224">00103</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abb07431062ed1d66aaec4d0a9786f224" title="Retrieves the AABB&#39;s minimum point.">getMin</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> mMin;}
 <a name="l00104"></a>00104 
-<a name="l00106"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a">00106</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a" title="Retrieves the AABB&#39;s maximum point.">getMax</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abbc5580d0568a14510f099de6eb7bab4" title="Maximum point.">mMax</a>;}
+<a name="l00106"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a">00106</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#af0e137d1271b188eb7a102ba99a5150a" title="Retrieves the AABB&#39;s maximum point.">getMax</a>()<span class="keyword"> const </span>{<span class="keywordflow">return</span> mMax;}
 <a name="l00107"></a>00107 
 <a name="l00110"></a>00110   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a30edfc023eece7b0efc250ca4dd08cba">overlaps</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; bb) <span class="keyword">const</span>;
 <a name="l00111"></a>00111 
@@ -130,10 +130,10 @@
 <a name="l00117"></a>00117 
 <a name="l00124"></a>00124   <span class="keywordtype">bool</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a832923a0b76b8481ae6514a8a0fc652a">isSimilarTo</a>(<span class="keyword">const</span> <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html" title="Standalone axis aligned bounding box implemented built on top of GLM.">AABB</a>&amp; b, glm::float_t diff = 0.5) <span class="keyword">const</span>;
 <a name="l00125"></a>00125 
-<a name="l00126"></a>00126 <span class="keyword">protected</span>:
+<a name="l00126"></a>00126 <span class="keyword">private</span>:
 <a name="l00127"></a>00127 
-<a name="l00128"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a638b7bc7e9e2937e8630c404ba0a118e">00128</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#a638b7bc7e9e2937e8630c404ba0a118e" title="Minimum point.">mMin</a>;   
-<a name="l00129"></a><a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abbc5580d0568a14510f099de6eb7bab4">00129</a>   glm::vec3 <a class="code" href="class_c_p_m___g_l_m___a_a_b_b___n_s_1_1_a_a_b_b.html#abbc5580d0568a14510f099de6eb7bab4" title="Maximum point.">mMax</a>;   
+<a name="l00128"></a>00128   glm::vec3 mMin;   
+<a name="l00129"></a>00129   glm::vec3 mMax;   
 <a name="l00130"></a>00130 };
 <a name="l00131"></a>00131 
 <a name="l00132"></a>00132 } <span class="comment">// namespace CPM_GLM_AABB_NS </span>
@@ -143,7 +143,7 @@
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Dec 9 2013 17:25:43 for GLM AABB by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Dec 9 2013 17:45:22 for GLM AABB by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
