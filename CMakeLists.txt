@@ -35,7 +35,7 @@ endif()
 # ++ MODULE: GLM
 CPM_AddModule("GLM"
   GIT_REPOSITORY "https://github.com/iauns/cpm-glm"
-  GIT_TAG "1.0.1"
+  GIT_TAG "1.0.2"
   USE_EXISTING_VER TRUE
   EXPORT_MODULE TRUE    # Use EXPORT_MODULE sparingly. We expose GLM's interface
   )                     # through our own interface hence why we export it.
